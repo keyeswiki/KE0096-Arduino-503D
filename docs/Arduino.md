@@ -30,14 +30,11 @@
 
 ![](media/4baf5095962e49c1f3ebeb6c2da823f0.png)
 
-接下来是开发板驱动的安装，这次我们安装的是Keyes UNO R3
-开发板的驱动，Keyes 2560 R3
-开发板安装驱动方法和这个类似，驱动文件可以用同一个文件。
+接下来是开发板驱动的安装，这次我们安装的是Keyes UNO R3开发板的驱动，Keyes 2560 R3开发板安装驱动方法和这个类似，驱动文件可以用同一个文件。
 
 不同的系统，安装驱动的方法也有一些细小的区别，下面我们介绍在WIN 7系统安装驱动的方法。
 
-第一次Keyes UNO R3
-开发板连接电脑时，点击计算机--属性--设备管理器，显示如下图。
+第一次Keyes UNO R3开发板连接电脑时，点击计算机--属性--设备管理器，显示如下图。
 
 ![](media/ef888e8d5fad0b30e4da671933f8842c.png)
 
@@ -65,13 +62,13 @@
 
 # 3.2、Arduino IDE的使用方法
 
-Keyes UNO R3
-开发板的USB驱动安装成功之后，我们可以在Windows设备管理器中找到相应的串口。
+Keyes UNO R3开发板的USB驱动安装成功之后，我们可以在Windows设备管理器中找到相应的串口。
 
 下面示范第一个程序的烧写，串口监视器中显示“Hello World！”。
 
 测试代码为：
 
+```
 int val;
 
 int ledpin=13;
@@ -80,9 +77,9 @@ void setup()
 
 {
 
-Serial.begin(9600);
+    Serial.begin(9600);
 
-pinMode(ledpin,OUTPUT);
+    pinMode(ledpin,OUTPUT);
 
 }
 
@@ -90,30 +87,28 @@ void loop()
 
 {
 
-val=Serial.read();
+    val=Serial.read();
 
-if(val=='R')
+    if(val=='R')
 
-{
+    {
 
-digitalWrite(ledpin,HIGH);
+        digitalWrite(ledpin,HIGH);
 
-delay(500);
+        delay(500);
 
-digitalWrite(ledpin,LOW);
+        digitalWrite(ledpin,LOW);
 
-delay(500);
+        delay(500);
 
-Serial.println("Hello World!");
+        Serial.println("Hello World!");
+
+    }
 
 }
+```
 
-}
-
-我们打开Arduino 的软件，编写一段程序让Keyes UNO R3
-开发板接受到我们发的指令就显示“Hello World！”字符串；我们再借用一下Keyes UNO R3 开发板上的 D13
-的指示灯，让Keyes UNO R3
-开发板接受到指令时指示灯闪烁一下，再显示“Hello World！”。
+我们打开Arduino 的软件，编写一段程序让Keyes UNO R3开发板接受到我们发的指令就显示“Hello World！”字符串；我们再借用一下Keyes UNO R3 开发板上的 D13的指示灯，让Keyes UNO R3开发板接受到指令时指示灯闪烁一下，再显示“Hello World！”。
 
 打开Arduino 的软件，设置板，如下。
 
@@ -127,8 +122,7 @@ Serial.println("Hello World!");
 
 ![](media/add2f4f32678fe555861ae1763488afd.png)
 
-上传成功，输入R，点击发送，Keyes UNO R3 开发板上的 D13
-的指示灯闪烁一次，串口监视器中显示 Hello World! 如下图
+上传成功，输入R，点击发送，Keyes UNO R3 开发板上的 D13的指示灯闪烁一次，串口监视器中显示 Hello World! 如下图
 
 ![](media/fa8f2de13c41710b9dbbfde0833eca74.png)
 
@@ -163,6 +157,7 @@ LED*1
 
 测试代码
 
+```
 int led = 2; //定义数字口2
 
 void setup()
@@ -186,6 +181,7 @@ void loop()
   delay(1000);//延迟1秒
 
 }
+```
 
 测试结果
 
@@ -217,13 +213,14 @@ LED*1
 
 测试代码
 
+```
 int ledPin = 3; // 定义数字口3
 
 void setup()
 
 {
 
-pinMode(ledPin, OUTPUT);// 将ledPin设置为输出
+	pinMode(ledPin, OUTPUT);// 将ledPin设置为输出
 
 }
 
@@ -231,31 +228,30 @@ void loop()
 
 {
 
-for (int a=0; a\<=255;a++)// 设置使LED逐渐变亮
+    for (int a=0; a\<=255;a++)// 设置使LED逐渐变亮
 
-{
+    {
 
-analogWrite(ledPin,a); //
-开启led,调节亮度，范围是0-255，在255时led最亮
+        analogWrite(ledPin,a); //开启led,调节亮度，范围是0-255，在255时led最亮
 
-delay(10); // 延迟0.01S
+        delay(10); // 延迟0.01S
 
-}
+    }
 
-for (int a=255; a\>=0;a--) // 设置使LED逐渐变暗
+    for (int a=255; a\>=0;a--) // 设置使LED逐渐变暗
 
-{
+    {
 
-analogWrite(ledPin,a); //
-开启led,调节亮度，范围是0-255，在255时led最亮
+        analogWrite(ledPin,a); //开启led,调节亮度，范围是0-255，在255时led最亮
 
-delay(10); // 延迟0.01秒
+        delay(10); // 延迟0.01秒
 
-}
+    }
 
-delay(1000);// 延迟1秒
+    delay(1000);// 延迟1秒
 
 }
+```
 
 测试结果
 
@@ -287,6 +283,7 @@ LED\*5
 
 测试代码
 
+```
 int BASE = 2 ; //第一个 LED 接的 I/O 口
 
 int NUM = 5; //LED 的总数
@@ -295,41 +292,41 @@ void setup()
 
 {
 
-for (int i = BASE; i \< BASE + NUM; i ++)
+    for (int i = BASE; i < BASE + NUM; i ++)
 
-{
+    {
 
-pinMode(i, OUTPUT); //设定数字I/O口为输出
+    	pinMode(i, OUTPUT); //设定数字I/O口为输出
 
-}
-
+    }
 }
 
 void loop()
 
 {
 
-for (int i = BASE; i \< BASE + NUM; i ++)
+    for (int i = BASE; i < BASE + NUM; i ++)
 
-{
+    {
 
-digitalWrite(i, HIGH); //设定数字I/O口输出为"高"，即逐渐开灯
+        digitalWrite(i, HIGH); //设定数字I/O口输出为"高"，即逐渐开灯
 
-delay(200); //延迟
+        delay(200); //延迟
+
+    }
+
+    for (int i = BASE; i < BASE + NUM; i ++)
+
+    {
+
+        digitalWrite(i, LOW); //设定数字I/O口输出为"低"，即逐渐关灯
+
+        delay(200); //延迟
+
+    }
 
 }
-
-for (int i = BASE; i \< BASE + NUM; i ++)
-
-{
-
-digitalWrite(i, LOW); //设定数字I/O口输出为"低"，即逐渐关灯
-
-delay(200); //延迟
-
-}
-
-}
+```
 
 测试结果
 
@@ -339,8 +336,7 @@ delay(200); //延迟
 
 实验说明
 
-前面我们已经完成了单个小灯的控制实验，接下来我们就来做一个稍微复杂一点的交通灯实验，其实聪明的朋友们可以看出来这个实验就是将上面单个小灯的实验扩展成3
-个颜色的小灯，就可以实现我们模拟交通灯的实验了。
+前面我们已经完成了单个小灯的控制实验，接下来我们就来做一个稍微复杂一点的交通灯实验，其实聪明的朋友们可以看出来这个实验就是将上面单个小灯的实验扩展成3个颜色的小灯，就可以实现我们模拟交通灯的实验了。
 
 实验器材
 
@@ -362,6 +358,7 @@ delay(200); //延迟
 
 测试代码
 
+```
 int redled =10; //定义数字10 接口
 
 int yellowled =7; //定义数字7 接口
@@ -372,11 +369,11 @@ void setup()
 
 {
 
-pinMode(redled, OUTPUT);//定义红色小灯接口为输出接口
+    pinMode(redled, OUTPUT);//定义红色小灯接口为输出接口
 
-pinMode(yellowled, OUTPUT); //定义黄色小灯接口为输出接口
+    pinMode(yellowled, OUTPUT); //定义黄色小灯接口为输出接口
 
-pinMode(greenled, OUTPUT); //定义绿色小灯接口为输出接口
+    pinMode(greenled, OUTPUT); //定义绿色小灯接口为输出接口
 
 }
 
@@ -384,35 +381,36 @@ void loop()
 
 {
 
-digitalWrite(greenled, HIGH);////点亮 绿灯
+    digitalWrite(greenled, HIGH);////点亮 绿灯
 
-delay(5000);//延时5秒
+    delay(5000);//延时5秒
 
-digitalWrite(greenled, LOW); //熄灭 绿灯
+    digitalWrite(greenled, LOW); //熄灭 绿灯
 
-for(int i=0;i\<3;i++)//闪烁交替三次，黄灯闪烁效果
+    for(int i=0;i<3;i++)//闪烁交替三次，黄灯闪烁效果
 
-{
+    {
 
-delay(500);//延时0.5 秒
+        delay(500);//延时0.5 秒
 
-digitalWrite(yellowled, HIGH);//点亮 黄灯
+        digitalWrite(yellowled, HIGH);//点亮 黄灯
 
-delay(500);//延时0.5 秒
+        delay(500);//延时0.5 秒
 
-digitalWrite(yellowled, LOW);//熄灭 黄灯
+        digitalWrite(yellowled, LOW);//熄灭 黄灯
+
+    }
+
+    delay(500);//延时0.5 秒
+
+    digitalWrite(redled, HIGH);//点亮 红灯
+
+    delay(5000);//延时5 秒
+
+    digitalWrite(redled, LOW);//熄灭 红灯
 
 }
-
-delay(500);//延时0.5 秒
-
-digitalWrite(redled, HIGH);//点亮 红灯
-
-delay(5000);//延时5 秒
-
-digitalWrite(redled, LOW);//熄灭 红灯
-
-}
+```
 
 测试结果
 
@@ -422,11 +420,7 @@ digitalWrite(redled, LOW);//熄灭 红灯
 
 实验说明
 
-I/O 口的意思即为INPUT 接口和OUTPUT
-接口，到目前为止我们设计的小灯实验都还只是应用到Arduino 的I/O
-口的输出功能，这个实验我们来尝试一下使用Arduino的I/O
-口的输入功能即为读取外接设备的输出值，我们用一个按键和一个LED
-小灯完成一个输入输出结合使用的实验，让大家能简单了解I/O 的作用。
+I/O 口的意思即为INPUT 接口和OUTPUT接口，到目前为止我们设计的小灯实验都还只是应用到Arduino 的I/O口的输出功能，这个实验我们来尝试一下使Arduino的I/O口的输入功能即为读取外接设备的输出值，我们用一个按键和一个LED小灯完成一个输入输出结合使用的实验，让大家能简单了解I/O 的作用。
 
 实验器材
 
@@ -452,6 +446,7 @@ LED*1
 
 测试代码
 
+```
 int ledPin = 11; //定义数字口11
 
 int inputPin = 3; //定义数字口3
@@ -460,9 +455,9 @@ void setup()
 
 {
 
-pinMode(ledPin, OUTPUT); //将ledPin设置为输出
+    pinMode(ledPin, OUTPUT); //将ledPin设置为输出
 
-pinMode(inputPin, INPUT); //将inputPin设置为输入
+    pinMode(inputPin, INPUT); //将inputPin设置为输入
 
 }
 
@@ -470,27 +465,26 @@ void loop()
 
 {
 
-int val = digitalRead(inputPin);
+    int val = digitalRead(inputPin);//设置数字变量val，读取到数字口3的数值，并赋值给 val
 
-//设置数字变量val，读取到数字口3的数值，并赋值给 val
+    if (val == LOW) //当val为低电平时，LED变暗
 
-if (val == LOW) //当val为低电平时，LED变暗
+    {
 
-{
+    	digitalWrite(ledPin, LOW); // LED变暗
 
-digitalWrite(ledPin, LOW); // LED变暗
+    }
 
-}
+    else
 
-else
+    {
 
-{
+    	digitalWrite(ledPin, HIGH); // LED亮起
 
-digitalWrite(ledPin, HIGH); // LED亮起
-
-}
+    }
 
 }
+```
 
 测试结果
 
@@ -500,10 +494,7 @@ digitalWrite(ledPin, HIGH); // LED亮起
 
 实验说明
 
-完成上面的实验以后相信已经有很多朋友可以独立完成这个实验了，我们可以将上面的按键控制小灯的实验扩展成4个按键对应3
-个小灯，占用7个数字I/O
-接口。为方便接线，我们把3个小灯用一个RGB灯代替。RGB灯可通过 R、 G、
-B三个引脚的PWM电压输入可以调节三种基色（红/蓝/绿）的强度从而实现全彩的混色效果。
+完成上面的实验以后相信已经有很多朋友可以独立完成这个实验了，我们可以将上面的按键控制小灯的实验扩展成4个按键对应3个小灯，占用7个数字I/O接口。为方便接线，我们把3个小灯用一个RGB灯代替。RGB灯可通过 R、 G、B三个引脚的PWM电压输入可以调节三种基色（红/蓝/绿）的强度从而实现全彩的混色效果。
 
 本实验中我们利用4个按键控制3个PWM口，控制RGB模块发光颜色从而达到抢答器的效果。RGB灯接口说明如下图。
 
@@ -535,129 +526,93 @@ RGB灯*1
 
 测试代码
 
-int redled=9;
+```
+// 定义LED控制引脚（PWM输出）
+int redled = 9;                     // 红色LED连接数字引脚9
+int greenled = 10;                  // 绿色LED连接数字引脚10  
+int blueled = 11;                   // 蓝色LED连接数字引脚11
 
-int greenled=10;
+// 定义按钮输入引脚
+int redpin = 5;                     // 红色按钮连接数字引脚5
+int greenpin = 4;                   // 绿色按钮连接数字引脚4
+int bluepin = 3;                    // 蓝色按钮连接数字引脚3
+int restpin = 2;                    // 复位按钮连接数字引脚2
 
-int blueled=11;
-
-int redpin=5;
-
-int greenpin=4;
-
-int bluepin=3;
-
-int restpin=2;
-
-int red;
-
-int green;
-
-int blue;
+// 按钮状态变量
+int red;                            // 存储红色按钮状态（0/1）
+int green;                          // 存储绿色按钮状态（0/1）
+int blue;                           // 存储蓝色按钮状态（0/1）
 
 void setup()
-
 {
-
-pinMode(redled,OUTPUT);
-
-pinMode(greenled,OUTPUT);
-
-pinMode( blueled,OUTPUT);
-
-pinMode(redpin,INPUT);
-
-pinMode(greenpin,INPUT);
-
-pinMode(bluepin,INPUT);
-
+  // 初始化LED引脚为输出模式
+  pinMode(redled, OUTPUT);          // 设置红色LED为输出
+  pinMode(greenled, OUTPUT);        // 设置绿色LED为输出
+  pinMode(blueled, OUTPUT);         // 设置蓝色LED为输出
+  
+  // 初始化按钮引脚为输入模式
+  pinMode(redpin, INPUT);           // 设置红色按钮为输入
+  pinMode(greenpin, INPUT);         // 设置绿色按钮为输入
+  pinMode(bluepin, INPUT);          // 设置蓝色按钮为输入
 }
 
 void loop()
-
 {
+  // 读取按钮状态（按下时为LOW）
+  red = digitalRead(redpin);        // 读取红色按钮
+  green = digitalRead(greenpin);    // 读取绿色按钮
+  blue = digitalRead(bluepin);      // 读取蓝色按钮
 
-red=digitalRead(redpin);
-
-green=digitalRead(greenpin);
-
-blue=digitalRead(bluepin);
-
-if(red==LOW)RED_YES();
-
-if(green==LOW)GREEN_YES();
-
-if(blue==LOW)BLUE_YES();
-
+  // 检测按钮按下并执行对应函数
+  if(red == LOW) RED_YES();         // 红色按钮按下触发
+  if(green == LOW) GREEN_YES();     // 绿色按钮按下触发
+  if(blue == LOW) BLUE_YES();       // 蓝色按钮按下触发
 }
 
+// 红色模式函数
 void RED_YES()
-
 {
-
-while(digitalRead(restpin)==1)
-
-{
-
-color(255, 0, 0);
-
+  while(digitalRead(restpin) == 1)  // 当复位按钮未按下时循环
+  {
+    color(255, 0, 0);               // 输出纯红色（R=255,G=0,B=0）
+  }
+  clear_led();                      // 退出后关闭所有LED
 }
 
-clear_led();
-
-}
-
+// 绿色模式函数
 void GREEN_YES()
-
 {
-
-while(digitalRead(restpin)==1)
-
-{
-
-color(0, 255, 0);
-
+  while(digitalRead(restpin) == 1)  // 当复位按钮未按下时循环
+  {
+    color(0, 255, 0);               // 输出纯绿色（R=0,G=255,B=0）
+  }
+  clear_led();                      // 退出后关闭所有LED
 }
 
-clear_led();
-
-}
-
+// 蓝色模式函数
 void BLUE_YES()
-
 {
-
-while(digitalRead(restpin)==1)
-
-{
-
-color(0, 0, 255);
-
+  while(digitalRead(restpin) == 1)  // 当复位按钮未按下时循环
+  {
+    color(0, 0, 255);               // 输出纯蓝色（R=0,G=0,B=255）
+  }
+  clear_led();                      // 退出后关闭所有LED
 }
 
-clear_led();
-
-}
-
+// 关闭所有LED
 void clear_led()
-
 {
-
-color(0, 0, 0);
-
+  color(0, 0, 0);                   // 输出黑色（R=0,G=0,B=0）
 }
 
-void color (unsigned char red, unsigned char green, unsigned char blue) //颜色控制函数
-
+// RGB颜色控制函数
+void color(unsigned char red, unsigned char green, unsigned char blue) 
 {
-
-analogWrite(redled, red);
-
-analogWrite(greenled,green);
-
-analogWrite(blueled, blue);
-
+  analogWrite(redled, red);         // 设置红色LED亮度（0-255）
+  analogWrite(greenled, green);     // 设置绿色LED亮度（0-255）
+  analogWrite(blueled, blue);       // 设置蓝色LED亮度（0-255）
 }
+```
 
 测试结果
 
@@ -691,15 +646,16 @@ LED*1
 
 测试代码
 
+```
 int ledpin=11;//定义数字接口11（PWM 输出）
 
 void setup()
 
 {
 
-pinMode(ledpin,OUTPUT);//定义数字接口11 为输出
+    pinMode(ledpin,OUTPUT);//定义数字接口11 为输出
 
-Serial.begin(9600);//设置波特率为9600
+    Serial.begin(9600);//设置波特率为9600
 
 }
 
@@ -707,17 +663,18 @@ void loop()
 
 {
 
-int val=analogRead(0);//读取模拟口A0口的值
+    int val=analogRead(0);//读取模拟口A0口的值
 
-val = map(val, 0, 1023, 0, 255);//从0-1023映射到0-255
+    val = map(val, 0, 1023, 0, 255);//从0-1023映射到0-255
 
-Serial.println(val);//显示val 变量
+    Serial.println(val);//显示val 变量
 
-analogWrite(ledpin,val);// 打开LED 并设置亮度
+    analogWrite(ledpin,val);// 打开LED 并设置亮度
 
-delay(100);//延时0.1 秒
+    delay(100);//延时0.1 秒
 
 }
+```
 
 测试结果
 
@@ -749,13 +706,14 @@ USB线*1
 
 code 1:
 
+```
 int buzzer=3; //定义数字口3
 
 void setup()
 
 {
 
-pinMode(buzzer,OUTPUT);//将buzzer设置为输出
+	pinMode(buzzer,OUTPUT);//将buzzer设置为输出
 
 }
 
@@ -763,214 +721,143 @@ void loop()
 
 {
 
-unsigned char i,j;//定义变量i，j
+    unsigned char i,j;//定义变量i，j
 
-while(1)
+    while(1)
 
-{
+    {
 
-for(i=0;i\<80;i++)// 输出一个频率的声音
+        for(i=0;i<80;i++)// 输出一个频率的声音
 
-{
+        {
 
-digitalWrite(buzzer,HIGH);
+            digitalWrite(buzzer,HIGH);
 
-delay(1);//延迟1ms
+            delay(1);//延迟1ms
 
-digitalWrite(buzzer,LOW);
+            digitalWrite(buzzer,LOW);
 
-delay(1);//延迟1ms
+            delay(1);//延迟1ms
+
+        }
+
+        for(i=0;i<100;i++)// 输出另一个频率的声音
+
+        {
+
+            digitalWrite(buzzer,HIGH);
+
+            delay(2);//延迟2ms
+
+            digitalWrite(buzzer,LOW);
+
+            delay(2);//延迟2ms
+
+        }
+
+    }
 
 }
-
-for(i=0;i\<100;i++)// 输出另一个频率的声音
-
-{
-
-digitalWrite(buzzer,HIGH);
-
-delay(2);//延迟2ms
-
-digitalWrite(buzzer,LOW);
-
-delay(2);//延迟2ms
-
-}
-
-}
-
-}
+```
 
 code 2:
 
-\#define D0 -1
+```
+// 定义音符频率（D调）
+#define D0 -1      // 休止符
+#define D1 262     // 低音1
+#define D2 293     // 低音2
+#define D3 329     // 低音3
+#define D4 349     // 低音4
+#define D5 392     // 低音5
+#define D6 440     // 低音6
+#define D7 494     // 低音7
 
-\#define D1 262
+#define M1 523     // 中音1
+#define M2 586     // 中音2  
+#define M3 658     // 中音3
+#define M4 697     // 中音4
+#define M5 783     // 中音5
+#define M6 879     // 中音6
+#define M7 987     // 中音7
 
-\#define D2 293
+#define H1 1045    // 高音1
+#define H2 1171    // 高音2
+#define H3 1316    // 高音3
+#define H4 1393    // 高音4
+#define H5 1563    // 高音5
+#define H6 1755    // 高音6
+#define H7 1971    // 高音7
 
-\#define D3 329
+// 定义节拍时长
+#define WHOLE 1        // 全音符
+#define HALF 0.5       // 二分音符  
+#define QUARTER 0.25   // 四分音符
+#define EIGHTH 0.25    // 八分音符
+#define SIXTEENTH 0.625 // 十六分音符
 
-\#define D4 349
-
-\#define D5 392
-
-\#define D6 440
-
-\#define D7 494
-
-\#define M1 523
-
-\#define M2 586
-
-\#define M3 658
-
-\#define M4 697
-
-\#define M5 783
-
-\#define M6 879
-
-\#define M7 987
-
-\#define H1 1045
-
-\#define H2 1171
-
-\#define H3 1316
-
-\#define H4 1393
-
-\#define H5 1563
-
-\#define H6 1755
-
-\#define H7 1971
-
-//列出全部D调的频率
-
-\#define WHOLE 1
-
-\#define HALF 0.5
-
-\#define QUARTER 0.25
-
-\#define EIGHTH 0.25
-
-\#define SIXTEENTH 0.625
-
-//列出所有节拍
-
-int tune\[\]= //根据简谱列出各频率
-
+// 乐曲音符序列
+int tune[] = 
 {
-
-M3,M3,M4,M5,
-
-M5,M4,M3,M2,
-
-M1,M1,M2,M3,
-
-M3,M2,M2,
-
-M3,M3,M4,M5,
-
-M5,M4,M3,M2,
-
-M1,M1,M2,M3,
-
-M2,M1,M1,
-
-M2,M2,M3,M1,
-
-M2,M3,M4,M3,M1,
-
-M2,M3,M4,M3,M2,
-
-M1,M2,D5,D0,
-
-M3,M3,M4,M5,
-
-M5,M4,M3,M4,M2,
-
-M1,M1,M2,M3,
-
-M2,M1,M1
-
+  M3,M3,M4,M5,
+  M5,M4,M3,M2,
+  M1,M1,M2,M3,
+  M3,M2,M2,
+  M3,M3,M4,M5,
+  M5,M4,M3,M2,
+  M1,M1,M2,M3,
+  M2,M1,M1,
+  M2,M2,M3,M1,
+  M2,M3,M4,M3,M1,
+  M2,M3,M4,M3,M2,
+  M1,M2,D5,D0,
+  M3,M3,M4,M5,
+  M5,M4,M3,M4,M2,
+  M1,M1,M2,M3,
+  M2,M1,M1
 };
 
-float durt\[\]= //根据简谱列出各节拍
-
+// 对应节拍序列  
+float durt[] =
 {
-
-1,1,1,1,
-
-1,1,1,1,
-
-1,1,1,1,
-
-1+0.5,0.5,1+1,
-
-1,1,1,1,
-
-1,1,1,1,
-
-1,1,1,1,
-
-1+0.5,0.5,1+1,
-
-1,1,1,1,
-
-1,0.5,0.5,1,1,
-
-1,0.5,0.5,1,1,
-
-1,1,1,1,
-
-1,1,1,1,
-
-1,1,1,0.5,0.5,
-
-1,1,1,1,
-
-1+0.5,0.5,1+1,
-
+  1,1,1,1,
+  1,1,1,1,
+  1,1,1,1,
+  1+0.5,0.5,1+1,
+  1,1,1,1,
+  1,1,1,1,
+  1,1,1,1,
+  1+0.5,0.5,1+1,
+  1,1,1,1,
+  1,0.5,0.5,1,1,
+  1,0.5,0.5,1,1,
+  1,1,1,1,
+  1,1,1,1,
+  1,1,1,0.5,0.5,
+  1,1,1,1,
+  1+0.5,0.5,1+1,
 };
 
-int length;
-
-int tonepin=3; //得用3号接口
+int length;            // 乐曲长度
+int tonepin = 3;       // 蜂鸣器连接引脚（必须支持PWM）
 
 void setup()
-
 {
-
-pinMode(tonepin,OUTPUT);
-
-length=sizeof(tune)/sizeof(tune\[0\]); //计算长度
-
+  pinMode(tonepin, OUTPUT);  // 设置蜂鸣器引脚为输出模式
+  length = sizeof(tune)/sizeof(tune[0]); // 计算音符数组长度
 }
 
-void loop()
-
+void loop() 
 {
-
-for(int x=0;x\<length;x++)
-
-{
-
-tone(tonepin,tune\[x\]);
-
-delay(500\*durt\[x\]);
-//这里用来根据节拍调节延时，500这个指数可以自己调整，在该音乐中，我发现用500比较合适。
-
-noTone(tonepin);
-
+  for(int x=0; x<length; x++)  // 遍历所有音符
+  {
+    tone(tonepin, tune[x]);    // 播放当前音符
+    delay(500*durt[x]);        // 根据节拍延时（500为速度系数）
+    noTone(tonepin);           // 停止发声
+  }
+  delay(2000);                 // 曲目结束后延时2秒
 }
-
-delay(2000);
-
-}
+```
 
 测试结果
 
@@ -980,12 +867,9 @@ delay(2000);
 
 实验说明
 
-完成以上的各种实验后，我们对Arduino
-的应用也应该有一些认识和了解了，在基本的数字量输入输出和模拟量输入以及PWM
-的产生都掌握以后，我们就可以开始进行一些传感器的应用了。
+完成以上的各种实验后，我们对Arduino的应用也应该有一些认识和了解了，在基本的数字量输入输出和模拟量输入以及PWM的产生都掌握以后，我们就可以开始进行一些传感器的应用了。
 
-本次实验我们先进行一个较为简单的光敏电阻的使用实验。光敏电阻既然是可以根据光强改变阻值的元件，自然也需要模拟口读取模拟值了，本实验可以借鉴电位器调控灯光亮度实验，将电位计换做光敏电阻实现当光强不同时LED
-小灯的亮度也会有相应的变化。
+本次实验我们先进行一个较为简单的光敏电阻的使用实验。光敏电阻既然是可以根据光强改变阻值的元件，自然也需要模拟口读取模拟值了，本实验可以借鉴电位器调控灯光亮度实验，将电位计换做光敏电阻实现当光强不同时LED小灯的亮度也会有相应的变化。
 
 实验器材
 
@@ -1011,15 +895,16 @@ LED*1
 
 测试代码
 
+```
 int ledpin=11;//定义数字接口11（PWM 输出）
 
 void setup()
 
 {
 
-pinMode(ledpin,OUTPUT);//定义数字接口11 为输出
+    pinMode(ledpin,OUTPUT);//定义数字接口11 为输出
 
-Serial.begin(9600);//设置波特率为9600
+    Serial.begin(9600);//设置波特率为9600
 
 }
 
@@ -1027,17 +912,18 @@ void loop()
 
 {
 
-int val=analogRead(0);//读取模拟口A0口的值
+    int val=analogRead(0);//读取模拟口A0口的值
 
-Serial.println(val);//显示val 变量
+    Serial.println(val);//显示val 变量
 
-val = map(val, 0, 1023, 0, 255);//从0-1023映射到0-255
+    val = map(val, 0, 1023, 0, 255);//从0-1023映射到0-255
 
-analogWrite(ledpin,255-val);// 打开LED 并设置亮度
+    analogWrite(ledpin,255-val);// 打开LED 并设置亮度
 
-delay(10);//延时0.01 秒
+    delay(10);//延时0.01 秒
 
 }
+```
 
 测试结果
 
@@ -1069,27 +955,20 @@ USB线*1
 
 测试代码
 
+```
 void setup()
-
 {
-
-Serial.begin(9600); //Set serial baud rate to 9600 bps
-
+  Serial.begin(9600);          // 初始化串口通信，波特率9600bps
 }
 
 void loop()
-
 {
-
-int val;
-
-val=analogRead(0);//Read rotation sensor value from analog 0
-
-Serial.println(val,DEC);//Print the value to serial port
-
-delay(100);
-
+  int val;                    // 定义存储传感器值的变量
+  val = analogRead(0);        // 从模拟引脚0读取旋转传感器值（0-1023）
+  Serial.println(val, DEC);   // 以十进制格式输出传感器值到串口
+  delay(100);                 // 采样间隔100毫秒（10Hz采样率）
 }
+```
 
 测试结果
 
@@ -1132,31 +1011,22 @@ LED*1
 
 测试代码
 
-int led = 9;
+```
+int led = 9;                       // LED连接的数字引脚（需支持PWM）
 
-// the setup routine runs once when you press reset:
-
-void setup() {
-
-// initialize the digital pin as an output.
-
-pinMode(led, OUTPUT);
-
+void setup() 
+{                     // 初始化函数（仅运行一次）
+  pinMode(led, OUTPUT);            // 设置LED引脚为输出模式
 }
 
-// the loop routine runs over and over again forever:
-
-void loop() {
-
-digitalWrite(led, HIGH); // turn the LED on (HIGH is the voltage level)
-
-delay(1000); // wait for a second
-
-digitalWrite(led, LOW); // turn the LED off by making the voltage LOW
-
-delay(1000); // wait for a second
-
+void loop() 
+{                      // 主循环函数（重复执行）
+  digitalWrite(led, HIGH);         // 点亮LED（输出高电平）
+  delay(1000);                     // 保持1秒（1000毫秒）
+  digitalWrite(led, LOW);          // 熄灭LED（输出低电平）
+  delay(1000);                     // 保持1秒（1000毫秒）
 }
+```
 
 测试结果
 
@@ -1196,31 +1066,22 @@ BC547*1
 
 测试代码
 
-int led = 9;
+```
+int led = 9;           // 定义LED连接的引脚为数字引脚9
 
-// the setup routine runs once when you press reset:
-
-void setup() {
-
-// initialize the digital pin as an output.
-
-pinMode(led, OUTPUT);
-
+void setup() 
+{         // 初始化函数（上电/复位时执行一次）
+  pinMode(led, OUTPUT); // 将LED引脚设置为输出模式
 }
 
-// the loop routine runs over and over again forever:
-
-void loop() {
-
-digitalWrite(led, HIGH); // turn the LED on (HIGH is the voltage level)
-
-delay(1000); // wait for a second
-
-digitalWrite(led, LOW); // turn the LED off by making the voltage LOW
-
-delay(1000); // wait for a second
-
+void loop() 
+{          // 主循环函数（重复执行）
+  digitalWrite(led, HIGH);   // 点亮LED（输出高电平5V）
+  delay(1000);               // 保持点亮状态1秒（1000毫秒）
+  digitalWrite(led, LOW);    // 熄灭LED（输出低电平0V）
+  delay(1000);               // 保持熄灭状态1秒
 }
+```
 
 测试结果
 
